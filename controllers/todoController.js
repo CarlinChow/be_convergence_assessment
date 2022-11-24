@@ -1,19 +1,19 @@
 const { pool } = require('../config/database')
 require('express-async-errors') // wraps all async functions in a try and catch block, and calls next(err) if an error is thrown
 
-// @route:  GET /api/todo
-// @desc:   returns all todos items
-// @access: PUBLIC
+// route:  GET /api/todo
+// desc:   returns all todos items
+// access: PUBLIC
 const getTodos = async(req, res) => {
     const getTodosQuery = { text: 'SELECT * FROM todo' }
     const queryRes = await pool.query(getTodosQuery)
     res.status(200).json(queryRes.rows)
 }
 
-// @route:  POST /api/todo
-// @desc:   create a todo item
-// @body:   todo object (name, description, category, dueDate)
-// @access: PRIVATE (any authenticated user)
+// route:  POST /api/todo
+// desc:   create a todo item
+// body:   todo object (name, description, category, dueDate)
+// access: PRIVATE (any authenticated user)
 const createTodo = async(req, res) => {
     const { name, description, category, dueDate } = req.body
     const { id: userId } = req.user
@@ -33,10 +33,10 @@ const createTodo = async(req, res) => {
     })
 }
 
-// @route:  PUT /api/todo
-// @desc:   update a todo item
-// @body:   updated todo object (id, name, description, category, dueDate)
-// @access: PRIVATE (owner of todo obj)
+// route:  PUT /api/todo
+// desc:   update a todo item
+// body:   updated todo object (id, name, description, category, dueDate)
+// access: PRIVATE (owner of todo obj)
 const updateTodo = async(req, res) => {
     const { id: todoId, name, description, category, dueDate } = req.body
     const { id: userId } = req.user
@@ -99,11 +99,11 @@ const deleteTodo = async(req, res) => {
     res.status(200).json({ message: `todo ${todoId} has been deleted` })
 }
 
-// @route:  GET /api/todo/:filter/:query
-// @desc:   search todo items by different filters
-// @params: filter = column to search by (eg. category, name, description)
+// route:  GET /api/todo/:filter/:query
+// desc:   search todo items by different filters
+// params: filter = column to search by (eg. category, name, description)
 //          query = search string     
-// @access: PUBLIC
+// access: PUBLIC
 const searchTodosByFilter = async(req, res) => {
     const { query, filter } = req.params
     if(!query || !filter){

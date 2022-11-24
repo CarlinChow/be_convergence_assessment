@@ -4,7 +4,7 @@ const { getTodos, createTodo, updateTodo, deleteTodo, searchTodosByFilter } = re
 
 const router = express.Router()
 
-// @base route: /api/todo
+// base route: /api/todo
 router.route('/').get(getTodos).post(requireAuth, createTodo).put(requireAuth, updateTodo)
 
 router.route('/delete/:id').delete(requireAuth, deleteTodo)

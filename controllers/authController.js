@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('express-async-errors') // wraps all async functions in a try and catch block, and calls next(err) if an error is thrown
 
-// @route:  POST /api/auth/login
-// @desc:   authenticate user, returns JSON web token if success
-// @body:   obj w/ username and password fields
-// @access: PUBLIC
+// route:  POST /api/auth/login
+// desc:   authenticate user, returns JSON web token if success
+// body:   obj w/ username and password fields
+// access: PUBLIC
 const loginUser = async(req, res) => {
     const { username, password } = req.body
     if(!username || !password){
