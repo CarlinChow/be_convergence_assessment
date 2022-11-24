@@ -102,7 +102,7 @@ const deleteTodo = async(req, res) => {
 // route:  GET /api/todo/:filter/:query
 // desc:   search todo items by different filters
 // params: filter = column to search by (eg. category, name, description)
-//          query = search string     
+//         query = search string     
 // access: PUBLIC
 const searchTodosByFilter = async(req, res) => {
     const { query, filter } = req.params
