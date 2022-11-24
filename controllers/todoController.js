@@ -66,10 +66,10 @@ const updateTodo = async(req, res) => {
     res.status(200).json({ message: 'todo has been updated' })
 }
 
-// @route:  DELETE /api/todo/delete/:id
-// @desc:   delete a todo item
-// @params: id = id of todo item
-// @access: PRIVATE (owner of todo obj)
+// route:  DELETE /api/todo/delete/:id
+// desc:   delete a todo item
+// params: id = id of todo item
+// access: PRIVATE (owner of todo obj)
 const deleteTodo = async(req, res) => {
     const { id: todoId } = req.params
     const { id: userId } = req.user
